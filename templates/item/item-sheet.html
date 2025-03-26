@@ -1,0 +1,42 @@
+<form class="{{cssClass}} item-sheet-background" autocomplete="off">
+    <header class="sheet-header">
+        <div class="profile-img-wrapper">
+            <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        </div>
+        <div class="header-fields">
+            <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+                {{#if system.traits}}
+                <a class="trait-selector" data-options="equipmenttags" data-target="system.traits.equipmenttags">
+                    <i class="fas fa-edit"></i>
+                </a>
+                {{/if}}
+            </h1>
+            {{#if system.traits}}
+            <div class="mt-1">
+                <div class="mt-1">
+                    {{#each system.traits.equipmenttags.selected as |v k|}}
+                    <li class="tag {{k}}">{{ localize v }}</li>
+                    {{/each}}
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </header>
+
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "STORYPATH.Description"}}</a>
+        <a class="item" data-tab="effects">{{localize "STORYPATH.Effects"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor descriptionHTML target="system.description" button=true editable=editable engine="prosemirror"}}
+        </div>
+
+        <div class="tab" data-group="primary" data-tab="effects">
+            {{> systems/storypath-fvtt/templates/actor/active-effects.html}}
+        </div>
+    </section>
+</form>

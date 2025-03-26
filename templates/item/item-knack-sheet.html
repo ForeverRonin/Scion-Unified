@@ -1,0 +1,41 @@
+<form class="{{cssClass}} item-sheet-background" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+            <div class="d-flex align-items-center">
+                <label class="resource-label" >{{localize "STORYPATH.Active"}}:</label>
+                <input type="checkbox" name="system.active" {{checked system.active}}/>
+                <label class="resource-label" >{{localize "STORYPATH.Calling"}}:</label>
+                <input type="text" name="system.calling" value="{{system.calling}}"/>
+                <select name="system.category" data-type="String">
+                    {{selectOptions selects.knackCategories selected=system.category localize=true}}
+                </select>
+            </div>
+            <div class="d-flex align-items-center">
+                <label class="resource-label">{{localize "STORYPATH.Cost"}}:</label>
+                <input type="number" name="system.cost" value="{{system.cost}}"/>
+                <select name="system.costtype" data-type="String">
+                    {{selectOptions selects.knackCostTypes selected=system.costtype localize=true}}
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "STORYPATH.Description"}}</a>
+        <a class="item" data-tab="effects">{{localize "STORYPATH.Effects"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor descriptionHTML target="system.description" button=true editable=editable engine="prosemirror"}}
+        </div>
+
+        <div class="tab" data-group="primary" data-tab="effects">
+            {{> systems/storypath-fvtt/templates/actor/active-effects.html}}
+        </div>
+    </section>
+</form>

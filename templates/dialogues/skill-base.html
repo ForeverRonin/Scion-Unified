@@ -1,0 +1,95 @@
+{{#ifEquals data.rollType 'base'}}
+<div class="resource flex-center">
+    <label class="resource-label">{{localize "STORYPATH.Dice"}}</label>
+</div>
+<div class="resource d-flex flex-center mb-1">
+    <input name="object.dice" value="{{data.dice}}" type="number">
+</div>
+{{else}}
+<div class="resource grid grid-2col flex-center">
+    {{#ifEquals data.characterType 'scion'}}
+
+    <label class="resource-label">{{localize "STORYPATH.Attribute"}}: </label>
+    <select name="object.attribute" value="{{data.attribute}}" data-type="String">
+        {{selectOptions selects.attributes selected=data.attribute localize=true}}
+    </select>
+
+    <label class="resource-label">{{localize "STORYPATH.Skill"}}: </label>
+    <select name="object.skill" value="{{data.skill}}" data-type="String">
+        {{selectOptions selects.skills selected=data.skill localize=true}}
+    </select>
+
+    {{#ifEquals data.rollType 'itemRoll'}}
+    <label class="resource-label">{{localize "STORYPATH.ItemRating"}}: </label>
+    <input name="object.itemDice" value="{{data.itemDice}}" type="number">
+    {{/ifEquals}}
+
+    <label class="resource-label">{{localize "STORYPATH.Specialty"}}: </label>
+    <select name="object.specialty" value="{{data.specialty}}" data-type="String">
+        {{selectOptions data.specialtyList selected=data.specialty localize=true blank=""}}
+    </select>
+
+    {{/ifEquals}}
+
+
+    {{#ifEquals data.characterType 'npc'}}
+
+    <label class="resource-label">{{localize "STORYPATH.Pool"}}: </label>
+    <select name="object.pool" value="{{data.pool}}" data-type="String">
+        {{selectOptions selects.pools selected=data.pool localize=true}}
+    </select>
+
+    {{/ifEquals}}
+
+    <label class="resource-label">{{localize "STORYPATH.Scale"}}: </label>
+    <select name="object.scale" value="{{data.scale}}" data-type="number">
+        {{selectOptions selects.scaleLevels selected=data.scale localize=true}}
+    </select>
+
+    <label class="resource-label">{{localize "STORYPATH.DoubleSuccesses"}}: </label>
+    <input type="checkbox" name="object.doubleSuccesses" {{checked
+        data.doubleSuccesses}}>
+
+    <label class="resource-label">{{localize "STORYPATH.EnhancementOn0Successes"}} </label>
+    <input type="checkbox" name="object.enhancementOnZero" {{checked
+        data.enhancementOnZero}}>
+</div>
+
+{{/ifEquals}}
+<div class="resource grid grid-2col flex-center">
+    <div>
+        <label class="resource-label">{{localize "STORYPATH.DiceModifier"}} </label>
+        <input name="object.diceModifier" value="{{data.diceModifier}}" type="number">
+    </div>
+    <div>
+        <label class="resource-label">{{localize "STORYPATH.Enhancement"}} </label>
+        <input name="object.enhancement" value="{{data.enhancement}}" type="number">
+    </div>
+</div>
+
+<div class="resource grid grid-2col flex-center">
+    <div>
+        <label class="resource-label">{{localize "STORYPATH.TargetNumber"}} </label>
+        <input name="object.targetNumber" value="{{data.targetNumber}}" type="number">
+    </div>
+    <div>
+        <label class="resource-label">{{localize "STORYPATH.NumberAgain"}}</label>
+        <input name="object.numberAgain" value="{{data.numberAgain}}" type="number">
+    </div>
+</div>
+
+{{#if data.showDivinityDice}}
+<div class="resource flex-center">
+    <label class="resource-label">{{localize "STORYPATH.DivinityDice"}}</label>
+</div>
+<div class="resource d-flex flex-center mb-1">
+    <input name="object.divinityDice" value="{{data.divinityDice}}" type="number">
+</div>
+{{/if}}
+
+<div class="resource flex-center">
+    <label class="resource-label">{{localize "STORYPATH.Difficulty"}}</label>
+</div>
+<div class="resource d-flex flex-center mb-1">
+    <input name="object.difficulty" value="{{data.difficulty}}" type="number">
+</div>
