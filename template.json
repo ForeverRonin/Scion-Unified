@@ -1,0 +1,33 @@
+{
+  "Actor": {
+    "types": [
+      "scion",
+      "npc"
+    ],
+    "htmlFields": [
+      "biography"
+    ]
+  },
+  "Item": {
+    "types": [
+      "item",
+      "path",
+      "calling",
+      "knack",
+      "boon",
+      "purview",
+      "birthright",
+      "contact",
+      "specialty",
+      "condition",
+      "fatebinding",
+      "quality",
+      "flair",
+      "health",
+      "spell"
+    ],
+    "htmlFields": [
+      "description"
+    ]
+  }
+}
