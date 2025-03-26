@@ -2,9 +2,9 @@
   "id": "scion-unified",
   "title": "Scion: Unified Edition",
   "description": "Scion: Unified Edition is a mythic homebrew expansion that fuses the best of Scion 1st Edition, 2nd Edition, and elements of Chronicles of Darkness into a unified, heroic storytelling experience. Built on the flexible Storypath system, this reimagined edition honors the divine narrative of Scions — mortals touched by godly power — while expanding the world with deeper supernatural themes and narrative flexibility.\n\nThis project is made possible by the foundational work of GrumpSatyr, whose efforts in synthesizing multiple Scion and CoD systems laid the groundwork for this truly epic fusion of myth and modernity.\n\nScion is a game about gods and humanity — and everything in between. Origin begins the tale when Scions are still (mostly) human, before their divine Visitation changes everything. Whether you're channeling fate, forging pantheons, or battling Titanspawn, Legacy Edition brings myth to life at every scale.",
-  "url": "https://gitlab.com/sigil-vtt-projects/onyx-path/storypath-fvtt",
-  "license": "https://gitlab.com/sigil-vtt-projects/onyx-path/storypath-fvtt/-/raw/main/LICENSE.md",
-  "version": "1.6.1",
+  "url": "https://github.com/ForeverRonin/Scion-Unified",
+  "license": "",
+  "version": "0.1",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
