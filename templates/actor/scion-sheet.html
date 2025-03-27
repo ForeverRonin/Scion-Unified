@@ -60,7 +60,7 @@
 
     {{!-- Stats Tab --}}
     <div class="tab flex-center" data-group="primary" data-tab="stats">
-      {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Skills'}}
+      {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Skills'}}
       <div class="attributes grid grid-3col flex-group-center">
         {{#each system.skills as |skill key|}}
         <div class="skill flexrow flex-center">
@@ -77,7 +77,7 @@
         </div>
         {{/each}}
       </div>
-      {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Attributes'}}
+      {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Attributes'}}
       <div class="grid grid-4col">
         <div></div>
         <div class="resource-label flexrow flex-center">
@@ -110,7 +110,7 @@
         {{/each}}
         {{/each}}
       </div>
-      {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Combat'}}
+      {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Combat'}}
       <div>
         <div id="character-combat-tab">
           <div {{#ifEquals system.info.tier 'origin' }} class="grid grid-2col flex-group-center" {{/ifEquals}}
@@ -201,11 +201,11 @@
       </div>
       <div class="grid grid-2col">
         <div>
-          {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Health' small=true
+          {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Health' small=true
           name='health' list=actor.health}}
         </div>
         <div>
-          {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Conditions' small=true
+          {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Conditions' small=true
           name='condition' list=actor.conditions}}
         </div>
       </div>
@@ -213,15 +213,15 @@
 
     {{!-- Traits Tab --}}
     <div class="tab items" data-group="primary" data-tab="traits">
-      {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Specialties'
+      {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Specialties'
       name='specialty' list=actor.specialties}}
-      {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Paths' name='path' list=actor.paths}}
-      {{> systems/storypath-fvtt/templates/actor/item-points-section-header.html text='STORYPATH.Callings' name='calling'
+      {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Paths' name='path' list=actor.paths}}
+      {{> systems/scion-unified/templates/actor/item-points-section-header.html text='STORYPATH.Callings' name='calling'
       list=actor.callings}}
       {{#ifNotEquals system.info.tier 'origin'}}
       {{#ifNotEquals system.info.tier 'dragon'}}
       <div>
-        {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.LegendaryTitles'}}
+        {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.LegendaryTitles'}}
         <div class="flex-center mt-1">
           <textarea type="text" name="system.legend.title" rows="3">{{system.legend.title}}</textarea>
         </div>
@@ -231,9 +231,9 @@
       <div class="grid grid-2col">
         <div>
           {{#ifEquals system.info.tier 'dragon'}}
-          {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Remembrance' small=true}}
+          {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Remembrance' small=true}}
           {{else}}
-          {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Virtue' small=true}}
+          {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Virtue' small=true}}
           {{/ifEquals}}
           <div class="grid grid-3col flex-center">
             <input type="text" name="system.virtue.virtue" value="{{system.virtue.virtue}}" />
@@ -246,7 +246,7 @@
           </div>
         </div>
         <div>
-          {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Awareness' small=true}}
+          {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Awareness' small=true}}
           <div class="resource-content flexrow flex-center flex-between" style="margin-top:15px;">
             <div class="resource-value" data-value="{{system.awareness.value}}" data-name="system.awareness.value">
               {{#numLoop 10}}
@@ -261,7 +261,7 @@
 
     {{!-- Powers Tab --}}
     <div class="tab items" data-group="primary" data-tab="powers">
-      {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Knacks' name='knack'
+      {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Knacks' name='knack'
       list=actor.knacks}}
       {{#ifNotEquals system.info.tier 'dragon'}}
       <div class="mb-1">
@@ -271,12 +271,12 @@
         {{/each}}
       </div>
       {{/ifNotEquals}}
-      {{> systems/storypath-fvtt/templates/actor/item-points-section-header.html text='STORYPATH.Birthrights' name='birthright'
+      {{> systems/scion-unified/templates/actor/item-points-section-header.html text='STORYPATH.Birthrights' name='birthright'
       list=actor.birthrights}}
       {{#ifNotEquals system.info.tier 'origin'}}
       {{#ifNotEquals system.info.tier 'dragon'}}
-      {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Boons' name='boon' list=actor.boons}}
-      {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Purviews' name='purview'
+      {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Boons' name='boon' list=actor.boons}}
+      {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Purviews' name='purview'
       list=actor.purviews}}
       {{/ifNotEquals}}
       {{#ifEquals system.info.tier 'dragon'}}
@@ -285,16 +285,16 @@
         <input type="text" name="system.magics" value="{{system.magics}}" />
       </div>
       {{/ifEquals}}
-      {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Spells' name='spell'
+      {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Spells' name='spell'
       list=actor.spells}}
-      {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Fatebindings' name='fatebinding'
+      {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Fatebindings' name='fatebinding'
       list=actor.fatebindings}}
       {{/ifNotEquals}}
     </div>
 
     {{!-- Deeds Tab --}}
     <div class="tab deeds" data-group="primary" data-tab="deeds">
-      {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Deeds'}}
+      {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Deeds'}}
       <div>
         {{#ifEquals system.info.tier 'dragon'}}
         <div>
@@ -325,7 +325,7 @@
         {{/ifEquals}}
       </div>
       <div>
-        {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Experience'}}
+        {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Experience'}}
         <div class="grid grid-3col">
           <div class="resource-content flexrow flex-center flex-between">
             <div>
@@ -349,12 +349,12 @@
           </div>
         </div>
       </div>
-      {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Contacts' name='contact'
+      {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Contacts' name='contact'
       list=actor.contacts}}
     </div>
 
     <div class="tab effects" data-group="primary" data-tab="effects">
-      {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.SavedRolls'}}
+      {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.SavedRolls'}}
       <ol class="items-list">
         {{#each system.savedRolls as |item id|}}
         <li class="item flexrow saved-roll-row" data-item-id="{{id}}" data-saved-roll-id="{{id}}">
@@ -370,17 +370,17 @@
         </li>
         {{/each}}
       </ol>
-      {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Effects'}}
-      {{> systems/storypath-fvtt/templates/actor/active-effects.html}}
+      {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Effects'}}
+      {{> systems/scion-unified/templates/actor/active-effects.html}}
     </div>
 
     {{!-- Biography Tab --}}
     <div class="tab biography" data-group="primary" data-tab="description">
       <div>
-        {{> systems/storypath-fvtt/templates/actor/item-section-header.html text='STORYPATH.Equipment' name='item'
+        {{> systems/scion-unified/templates/actor/item-section-header.html text='STORYPATH.Equipment' name='item'
         list=actor.gear}}
       </div>
-      {{> systems/storypath-fvtt/templates/actor/section-header.html text='STORYPATH.Description&Notes'}}
+      {{> systems/scion-unified/templates/actor/section-header.html text='STORYPATH.Description&Notes'}}
       {{editor biographyHTML target="system.biography" button=true editable=editable engine="prosemirror"}}
     </div>
 
