@@ -1,5 +1,9 @@
+// Shared item data structures for Storypath systems
+// TODO: Split into core/shared vs. system-specific classes if game logic diverges
 import { traitField } from "./common-template.js";
-
+// These item data models are partially system-agnostic, but many fields are Scion-specific.
+// TODO: If supporting multiple Storypath games, consider extracting shared logic to a base class
+// and using system-specific extensions (e.g., ScionItemKnackData) where needed.
 const fields = foundry.data.fields;
 
 class CommonItemData extends foundry.abstract.TypeDataModel {
@@ -15,7 +19,8 @@ class CommonItemData extends foundry.abstract.TypeDataModel {
         return { ...this };
     }
 }
-
+// TODO: Confirm equipment tag format is consistent across Storypath games
+// TODO: This item type may gain system-specific fields in the future
 export class ItemData extends CommonItemData {
     static defineSchema() {
         const commonData = super.defineSchema();
