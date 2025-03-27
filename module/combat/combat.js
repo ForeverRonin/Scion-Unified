@@ -1,3 +1,17 @@
+/**
+ * Storypath Combat Extensions
+ *
+ * This file customizes Foundry's core Combat and Combatant classes for use with Storypath games.
+ *
+ * ⚠️ Future Considerations:
+ * - Turn order and initiative behavior may differ between Storypath games (e.g., TCF vs. Scion).
+ * - Consider modularizing turn logic into system-specific strategies if divergence increases.
+ * - `flags.acted` is currently used to track combatant state; confirm if this generalizes across systems.
+ * - Combatant permission handling assumes a consistent actor-based model — verify against future system variants.
+ *
+ * Currently compatible across systems, but may need adaptation if mechanics or UX patterns diverge.
+ */
+
 export class StorypathCombat extends Combat {
     async resetTurnsTaken() {
       const updates = this.combatants.map(c => {
