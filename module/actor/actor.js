@@ -40,6 +40,9 @@ export class StorypathActor extends Actor {
     if (createData.items)
       return
     if (createData.type === 'scion') {
+      // TODO: Item structure and defaults are unique to Scion.
+  // Other Storypath games (e.g., Trinity, It Came From...) will likely use different
+  // types and initialization. Future support will require system-specific handling here.
       const itemData = [{
         name: "Bruised",
         type: "health",
