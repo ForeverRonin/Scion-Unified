@@ -8,7 +8,7 @@ export class RollForm extends FormApplication {
             this.object.isSavedRoll = true;
         }
         else {
-            var attirubteFilter = "none";
+            var attributeFilter = "none";
             this.object.itemDice = data.itemDice || 0;
             this.object.rollType = data.rollType;
             this.object.targetNumber = 8;
@@ -102,12 +102,14 @@ export class RollForm extends FormApplication {
         }
         this.object.divinityFailure = true;
       }
-
+// TODO: If supporting multiple Storypath systems, replace with dynamic path using {game.system.id}
       static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
+            // TODO: Confirm if sheetStyle should vary by system or be namespaced (e.g., `${game.system.id}-style`)
           classes: ["dialog", `${game.settings.get("storypath-fvtt", "sheetStyle")}-background`],
           popOut: true,
-          template: "systems/storypath-fvtt/templates/dialogues/skill-roll.html",
+// Use dynamic system path to support multiple Storypath systems
+          template: `systems/${game.system.id}/templates/dialogues/skill-roll.html`,
           id: "roll-form",
           title: `Roll`,
           width: 350,
@@ -341,11 +343,13 @@ export class RollForm extends FormApplication {
             rollData: this.object,
             rollingActor: this.actor,
         }
-        return await renderTemplate("systems/storypath-fvtt/templates/chat/roll-card.html", messageData);
+// Use dynamic path in case each system has its own roll-card.html
+        return await renderTemplate(`systems/${game.system.id}/templates/chat/roll-card.html`, messageData);
     }
 
     async _saveRoll(rollData) {
-        let html = await renderTemplate("systems/storypath-fvtt/templates/dialogues/save-roll.html", { 'name': this.object.name || 'New Roll' });
+// Use dynamic system path to support save-roll dialog in multiple Storypath systems
+        let html = await renderTemplate(`systems/${game.system.id}/templates/dialogues/save-roll.html`, { 'name': this.object.name || 'New Roll' });
 
         new foundry.applications.api.DialogV2({
             window: { title: game.i18n.localize("STORYPATH.SaveRoll"), },
