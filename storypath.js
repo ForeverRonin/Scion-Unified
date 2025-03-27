@@ -96,12 +96,13 @@ Hooks.once('init', async function () {
 
   // Pre-load templates
   loadTemplates([
-    "systems/storypath-fvtt/templates/dialogues/skill-base.html",
-    "systems/storypath-fvtt/templates/actor/active-effects.html",
-    "systems/storypath-fvtt/templates/actor/section-header.html",
-    "systems/storypath-fvtt/templates/actor/item-section-header.html",
-    "systems/storypath-fvtt/templates/actor/item-points-section-header.html",
-  ]);
+  `systems/${game.system.id}/templates/dialogues/skill-base.html`,
+  `systems/${game.system.id}/templates/actor/active-effects.html`,
+  `systems/${game.system.id}/templates/actor/section-header.html`,
+  `systems/${game.system.id}/templates/actor/item-section-header.html`,
+  `systems/${game.system.id}/templates/actor/item-points-section-header.html`,
+]);
+
 
   // If you need to add Handlebars helpers, here are a few useful examples:
   Handlebars.registerHelper('concat', function () {
