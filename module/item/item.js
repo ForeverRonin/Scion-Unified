@@ -2,10 +2,13 @@
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
+// StorypathItem class extends core Item to support Storypath mechanics
+// TODO: Confirm if any methods (e.g. roll) need system-specific branching for multi-game support
 export class StorypathItem extends Item {
   /**
    * Augment the basic Item data model with additional dynamic data.
    */
+  // TODO: Implement derived data logic for Storypath items here if needed
   prepareData() {
     super.prepareData();
 
@@ -23,6 +26,7 @@ export class StorypathItem extends Item {
    * @param {Event} event   The originating click event
    * @private
    */
+  // TODO: Implement item-specific roll behavior (e.g. for Knacks or Boons)
   async roll() {
     // Basic template rendering data
     const token = this.actor.token;
@@ -50,28 +54,35 @@ export class StorypathItem extends Item {
     return result;
   }
 }
-
+// Return default item icon based on type
+// TODO: Replace hardcoded paths with dynamic system ID if multi-Storypath support is needed
 function getDefaultImage(type) {
-  const defaultImages = {
-    'knack': "icons/svg/light.svg",
-    'contact': "icons/svg/mystery-man.svg",
-    'path': "systems/storypath-fvtt/assets/icons/mountain-road.svg",
-    'specialty': "icons/svg/upgrade.svg",
-    'quality': "icons/svg/aura.svg",
-    'flair': "systems/storypath-fvtt/assets/icons/eclipse-flare.svg",
-    'birthright': "icons/svg/chest.svg",
-    'boon': "systems/storypath-fvtt/assets/icons/gift-trap.svg",
-    'purview': "systems/storypath-fvtt/assets/icons/world.svg",
-    'condition': "icons/svg/daze.svg",
-    'calling': "systems/storypath-fvtt/assets/icons/book-aura.svg",
-    'health': "icons/svg/regen.svg",
-    'fatebinding': "systems/storypath-fvtt/assets/icons/crossed-chains.svg",
-    'spell': "systems/storypath-fvtt/assets/icons/magic-swirl.svg",
-    'item': "icons/svg/item-bag.svg"
-  };
+  // TODO: Use dynamic system ID to allow reuse across Storypath games
+const defaultImages = {
+  'knack': "icons/svg/light.svg",
+  'contact': "icons/svg/mystery-man.svg",
+  'path': `systems/${game.system.id}/assets/icons/mountain-road.svg`,
+  'specialty': "icons/svg/upgrade.svg",
+  'quality': "icons/svg/aura.svg",
+  'flair': `systems/${game.system.id}/assets/icons/eclipse-flare.svg`,
+  'birthright': "icons/svg/chest.svg",
+  'boon': `systems/${game.system.id}/assets/icons/gift-trap.svg`,
+  'purview': `systems/${game.system.id}/assets/icons/world.svg`,
+  'condition': "icons/svg/daze.svg",
+  'calling': `systems/${game.system.id}/assets/icons/book-aura.svg`,
+  'health': "icons/svg/regen.svg",
+  'fatebinding': `systems/${game.system.id}/assets/icons/crossed-chains.svg`,
+  'spell': `systems/${game.system.id}/assets/icons/magic-swirl.svg`,
+  'item': "icons/svg/item-bag.svg"
+};
   return defaultImages[type] || CONST.DEFAULT_TOKEN;
 }
-
+// Convert trait values into selected labels and build CSS class for display
+// TODO: Confirm trait handling remains consistent across item types and systems
+// TODO: Expand prepareItemTraits for broader item type support
+// This currently only decorates 'equipmenttags' on generic items.
+// Consider refactoring to support other item types (e.g. spells, boons) 
+// using a shared TRAIT_MAP or system-configurable lookup.
 export function prepareItemTraits(type, i) {
   const map = {
   };
