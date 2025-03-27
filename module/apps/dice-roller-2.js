@@ -133,11 +133,12 @@ export default class RollForm2 extends HandlebarsApplicationMixin(ApplicationV2)
     };
 
     static PARTS = {
+// Replace hardcoded system path with dynamic system ID
         dice: {
-            template: "systems/storypath-fvtt/templates/dialogues/dice-roll/skill-roll-2.html",
+            template: `systems/${game.system.id}/templates/dialogues/dice-roll/skill-roll-2.html`
         },
         footer: {
-            template: "systems/storypath-fvtt/templates/dialogues/dice-roll/dice-roll-footer.html",
+            template: `systems/${game.system.id}/templates/dialogues/dice-roll/dice-roll-footer.html`
         },
     };
 
@@ -355,13 +356,16 @@ export default class RollForm2 extends HandlebarsApplicationMixin(ApplicationV2)
             rollData: this.object,
             rollingActor: this.actor,
         }
-        return await renderTemplate("systems/storypath-fvtt/templates/chat/roll-card.html", messageData);
+// Use dynamic path to support different system directories
+        return await renderTemplate(`systems/${game.system.id}/templates/chat/roll-card.html`, messageData);
     }
 
     static async saveRoll() {
         const rollData = { ...this.object };
 
-        let html = await renderTemplate("systems/storypath-fvtt/templates/dialogues/save-roll.html", { 'name': this.object.name || 'New Roll' });
+// Dynamic system path to support multiple Storypath systems
+        let html = await renderTemplate(`systems/${game.system.id}/templates/dialogues/save-roll.html`, { 'name': this.object.name || 'New Roll' });
+
 
         new foundry.applications.api.DialogV2({
             window: { title: game.i18n.localize("STORYPATH.SaveRoll"), },
