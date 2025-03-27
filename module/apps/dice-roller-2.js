@@ -134,6 +134,7 @@ export default class RollForm2 extends HandlebarsApplicationMixin(ApplicationV2)
 
     static PARTS = {
 // Replace hardcoded system path with dynamic system ID
+// TODO: Use dynamic system ID for multi-Storypath support
         dice: {
             template: `systems/${game.system.id}/templates/dialogues/dice-roll/skill-roll-2.html`
         },
@@ -357,6 +358,7 @@ export default class RollForm2 extends HandlebarsApplicationMixin(ApplicationV2)
             rollingActor: this.actor,
         }
 // Use dynamic path to support different system directories
+// TODO: Use dynamic system ID for multi-Storypath support
         return await renderTemplate(`systems/${game.system.id}/templates/chat/roll-card.html`, messageData);
     }
 
@@ -364,6 +366,7 @@ export default class RollForm2 extends HandlebarsApplicationMixin(ApplicationV2)
         const rollData = { ...this.object };
 
 // Dynamic system path to support multiple Storypath systems
+// TODO: Use dynamic system ID for multi-Storypath support
         let html = await renderTemplate(`systems/${game.system.id}/templates/dialogues/save-roll.html`, { 'name': this.object.name || 'New Roll' });
 
 
