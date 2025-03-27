@@ -23,6 +23,7 @@ export class StorypathItemSheet extends ItemSheet {
   }
 
   /** @override */
+  // TODO: If item type structure diverges across Storypath systems, consider extracting this into a config-driven template map
   get template() {
    const path = `systems/${game.system.id}/templates/item`; 
   // TODO: Use dynamic system ID for multi-Storypath support
@@ -81,6 +82,7 @@ export class StorypathItemSheet extends ItemSheet {
       }
     );
     if (itemData.type === 'item') {
+// TODO: This trait preparation logic mirrors prepareItemTraits() — unify or reuse if structure remains consistent
       this._prepareTraits(itemData.type, context.system.traits);
     }
 
@@ -126,6 +128,7 @@ _prepareTraits(type, traits) {
 * @param {Event} event   The click event which originated the selection
 * @private
 */
+// TODO: Allow alternate trait config injection per item type for Storypath variants
 _onTraitSelector(event) {
   event.preventDefault();
   const a = event.currentTarget;
