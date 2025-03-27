@@ -28,6 +28,7 @@ export class StorypathActorSheet extends ActorSheet {
     }
   }
 
+  // TODO: Replace hardcoded 'storypath' with {game.system.id} in UI render classes once styles and CSS rules are verified.
   /**
  * Get the correct HTML template path to use for rendering this particular sheet
  * @type {String}
@@ -63,6 +64,7 @@ export class StorypathActorSheet extends ActorSheet {
         };
         buttons = [colorButton, ...buttons];
       }
+      // TODO: Replace hardcoded 'storypath' with {game.system.id} in UI render classes once styles and CSS rules are verified.
       const rollButton = {
         label: game.i18n.localize('STORYPATH.Roll'),
         class: 'roll-dice',
@@ -81,6 +83,7 @@ export class StorypathActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["storypath", "sheet", "actor"],
+      // TODO: Use {game.system.id} for template path if standardizing across Storypath games
       template: "systems/storypath-fvtt/templates/actor/scion-sheet.html",
       width: 875,
       height: 1110,
