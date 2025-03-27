@@ -34,9 +34,9 @@ export class StorypathActorSheet extends ActorSheet {
  * @type {String}
  */
   get template() {
-    if (this.actor.type === "npc") return "systems/storypath-fvtt/templates/actor/npc-sheet.html";
-    if (this.actor.type === "scion") return "systems/storypath-fvtt/templates/actor/scion-sheet.html";
-    return "systems/storypath-fvtt/templates/actor/scion-sheet.html";
+    if (this.actor.type === "npc") return `systems/${game.system.id}/templates/actor/npc-sheet.html;
+    if (this.actor.type === "scion") return `systems/${game.system.id}/templates/actor/scion-sheet.html`;
+    return `systems/${game.system.id}/templates/actor/scion-sheet.html`;
   }
 
   /**
@@ -84,7 +84,7 @@ export class StorypathActorSheet extends ActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["storypath", "sheet", "actor"],
       // TODO: Use {game.system.id} for template path if standardizing across Storypath games
-      template: "systems/storypath-fvtt/templates/actor/scion-sheet.html",
+      template: `systems/${game.system.id}/templates/actor/scion-sheet.html`,
       width: 875,
       height: 1110,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" }]
@@ -122,8 +122,8 @@ export class StorypathActorSheet extends ActorSheet {
     // Update traits
     this._prepareTraits(context.system.traits);
 
-    this.actor.headerImg = `systems/storypath-fvtt/assets/${game.settings.get("storypath-fvtt", "sheetStyle")}-header.png`;
-    this.actor.headerImgSmall = `systems/storypath-fvtt/assets/${game.settings.get("storypath-fvtt", "sheetStyle")}-small-header.png`;
+    this.actor.headerImg = `systems/${game.system.id}/assets/${game.settings.get("storypath-fvtt", "sheetStyle")}-header.png`;
+    this.actor.headerImgSmall = `systems/${game.system.id}/assets/${game.settings.get("storypath-fvtt", "sheetStyle")}-small-header.png`;
 
     this._prepareCharacterItems(context);
 
@@ -298,18 +298,25 @@ export class StorypathActorSheet extends ActorSheet {
 
 
 
-    // $('.storypath .window-content').css({ "background": `url(/systems/storypath-fvtt/assets/background-${game.settings.get("storypath-fvtt", "sheetStyle")}.png)`, "background-size": "cover" });
+ // Default background based on selected sheet style
+// $('.storypath .window-content').css({
+//   "background": `url(/systems/${game.system.id}/assets/background-${game.settings.get("storypath-fvtt", "sheetStyle")}.png)`,
+//   "background-size": "cover"
+// });
 
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
+// Background by tier (for Scion characters)
+// if (this.actor.type === 'scion') {
+//   $('.storypath .window-content').css({
+//     "background": `url(/systems/${game.system.id}/assets/background-${this.actor.system.info.tier}.png)`
+//   });
+// }
 
-    // if (this.actor.type === 'scion') {
-    //   $('.storypath .window-content').css({ "background": `url(/systems/storypath-fvtt/assets/background-${this.actor.system.info.tier}.png)` });
-    // }
-
-    // if (this.actor.type === 'npc') {
-    //   $('.storypath .window-content').css({ "background": `url(/systems/storypath-fvtt/assets/background-npc.png)` });
-    // }
+// Background for NPCs
+// if (this.actor.type === 'npc') {
+//   $('.storypath .window-content').css({
+//     "background": `url(/systems/${game.system.id}/assets/background-npc.png)`
+//   });
+// }
 
     html.find('.trait-selector').click(this._onTraitSelector.bind(this));
 
@@ -468,7 +475,7 @@ export class StorypathActorSheet extends ActorSheet {
 
 
   async helpDialogue() {
-    const template = "systems/storypath-fvtt/templates/dialogues/help-dialogue.html"
+    const template = `systems/${game.system.id}/templates/dialogues/help-dialogue.html`;
     const html = await renderTemplate(template);
 
     new foundry.applications.api.DialogV2({
@@ -482,7 +489,7 @@ export class StorypathActorSheet extends ActorSheet {
     event.preventDefault();
     const actorData = foundry.utils.duplicate(this.actor);
     const data = actorData.system;
-    const template = "systems/storypath-fvtt/templates/dialogues/color-picker.html"
+    const template = `systems/${game.system.id}/templates/dialogues/color-picker.html`;
     const html = await renderTemplate(template, { 'color': data.details.color });
 
     new foundry.applications.api.DialogV2({
@@ -512,7 +519,7 @@ export class StorypathActorSheet extends ActorSheet {
   async calculateHealth() {
     const actorData = foundry.utils.duplicate(this.actor);
     const data = actorData.system;
-    let  template = "systems/storypath-fvtt/templates/dialogues/calculate-npc-health.html";
+    const template = `systems/${game.system.id}/templates/dialogues/xyz.html`;
     let  html = await renderTemplate(template, { 'health': data.health.max });
 
     new foundry.applications.api.DialogV2({
@@ -816,7 +823,7 @@ export class StorypathActorSheet extends ActorSheet {
       item: item,
       labels: this.labels,
     };
-    const html = await renderTemplate("systems/storypath-fvtt/templates/chat/item-card.html", templateData);
+    const html = await renderTemplate(`systems/${game.system.id}/templates/chat/item-card.html`, templateData);
 
     // Create the ChatMessage data object
     const chatData = {
