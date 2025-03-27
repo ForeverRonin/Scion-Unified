@@ -10,6 +10,7 @@ export default class TraitSelector extends DocumentSheet {
 	    id: "trait-selector",
       classes: ["storypath", "trait-selector", "subconfig"],
       title: "Actor Trait Selection",
+// TODO: If supporting multiple Storypath systems, consider dynamic template paths using {game.system.id}
       template: "systems/storypath-fvtt/templates/dialogues/trait-selector.html",
       width: 320,
       height: "auto",
