@@ -2,11 +2,27 @@
 * Overrides the display of the combat and turn order tab to add activation
 * buttons and either move or remove the initiative button
 */
+/**
+ * Storypath Combat Tracker
+ *
+ * Extends the Foundry CombatTracker UI to add "acted" status toggling,
+ * color-coded turn rows, and a custom template override.
+ *
+ * ⚠️ Future Considerations:
+ * - `acted` flag may need localization or styling adjustments per system.
+ * - `color` field assumes consistent structure in `actor.system.details` — verify across Storypath variants.
+ * - Sorting logic prioritizes unacted combatants; may differ in systems with simultaneous or non-linear turn mechanics.
+ * - Consider modularizing the combat row renderer for more flexible UX per game.
+ */
+
 export class StorypathCombatTracker extends CombatTracker {
     static get defaultOptions() {
         return {
             ...super.defaultOptions,
-            template: 'systems/storypath-fvtt/templates/sidebar/combat-tracker.html',
+            // Use dynamic path to support UI divergence across Storypath systems
+            // TODO: Create system-specific combat-tracker.html if visual or UX elements vary
+            template: `systems/${game.system.id}/templates/sidebar/combat-tracker.html`,
+
         };
     }
     async getData(options) {
