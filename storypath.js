@@ -88,11 +88,23 @@ Hooks.once('init', async function () {
   CONFIG.Combatant.documentClass = StorypathCombatant;
   CONFIG.ui.combat = StorypathCombatTracker;
 
-  // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("storypath", StorypathActorSheet, { makeDefault: true });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("storypath", StorypathItemSheet, { makeDefault: true });
+  // Unregister the core sheets
+Actors.unregisterSheet("core", ActorSheet);
+Items.unregisterSheet("core", ItemSheet);
+
+// Register the custom Storypath sheets
+console.log("Registering StorypathActorSheet for types: ['scion', 'npc']");
+
+Actors.registerSheet("storypath", StorypathActorSheet, {
+  types: ["scion", "npc"],  // Add all custom actor types here
+  makeDefault: true
+});
+
+Items.registerSheet("storypath", StorypathItemSheet, {
+  types: ["item", "path", "boon", "knack", "condition", "specialty", "birthright", "purview", "spell", "fatebinding", "quality", "contact", "health", "flair", "calling"],
+  makeDefault: true
+});
+
 
   // Pre-load templates
   loadTemplates([
