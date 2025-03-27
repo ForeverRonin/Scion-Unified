@@ -37,15 +37,15 @@ export class ScionData extends CommonActorData {
         resistance: approachField("resistance")
       }),
       attributes: new fields.SchemaField({
-        intellect: attributeField("intellect", "power", "mental"),
-        might: attributeField("might", "power", "physical"),
-        presence: attributeField("presence", "power", "social"),
-        cunning: attributeField("cunning", "finesse", "mental"),
+        intelligence: attributeField("intelligence", "power", "mental"),
+        strength: attributeField("strength", "power", "physical"),
+        charisma: attributeField("charisma", "power", "social"),
+        wits: attributeField("wits", "finesse", "mental"),
         dexterity: attributeField("dexterity", "finesse", "physical"),
         manipulation: attributeField("manipulation", "finesse", "social"),
-        resolve: attributeField("resolve", "resistance", "mental"),
+        perception: attributeField("perception", "resistance", "mental"),
         stamina: attributeField("stamina", "resistance", "physical"),
-        composure: attributeField("composure", "resistance", "social")
+        appearance: attributeField("appearance", "resistance", "social")
       }),
       skills: new fields.SchemaField({
         academics: skillField("academics"),
