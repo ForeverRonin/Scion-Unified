@@ -26,7 +26,7 @@ export class StorypathItemSheet extends ItemSheet {
   // TODO: If item type structure diverges across Storypath systems, consider extracting this into a config-driven template map
   get template() {
    const path = `systems/${game.system.id}/templates/item`; 
-  // TODO: Use dynamic system ID for multi-Storypath support
+  // TODO: Using dynamic system ID for multi-Storypath support
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.html`;
 
