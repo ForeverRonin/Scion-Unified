@@ -24,7 +24,8 @@ export class StorypathItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = "systems/storypath-fvtt/templates/item";
+   const path = `systems/${game.system.id}/templates/item`; 
+  // TODO: Use dynamic system ID for multi-Storypath support
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.html`;
 
