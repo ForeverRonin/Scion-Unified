@@ -8,6 +8,7 @@ export default class TraitSelector extends DocumentSheet {
 	static get defaultOptions() {
 	  return foundry.utils.mergeObject(super.defaultOptions, {
 	    id: "trait-selector",
+// TODO: Class "storypath" used here may affect styles. Review CSS selectors when generalizing for multiple systems.
       classes: ["storypath", "trait-selector", "subconfig"],
       title: "Actor Trait Selection",
 // TODO: If supporting multiple Storypath systems, consider dynamic template paths using {game.system.id}
