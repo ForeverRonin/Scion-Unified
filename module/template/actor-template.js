@@ -1,7 +1,8 @@
 import { skillField, attributeField, resourceField, statField, traitField, approachField } from "./common-template.js";
 
 const fields = foundry.data.fields;
-
+// TODO: Consider refactoring this schema for cross-Storypath reuse
+// These data models are Scion-specific and may need splitting into shared + game-specific pieces
 class CommonActorData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     // Note that the return is just a simple object
@@ -22,7 +23,7 @@ class CommonActorData extends foundry.abstract.TypeDataModel {
     return { ...this };
   }
 }
-
+// TODO: This class is currently Scion-only — separate reusable base fields for broader Storypath support
 export class ScionData extends CommonActorData {
   static defineSchema() {
     // CharacterData inherits those resource fields
@@ -128,7 +129,8 @@ export class ScionData extends CommonActorData {
     return { ...this };
   }
 }
-
+// TODO: Confirm if NpcData structure is consistent across Storypath systems
+// If not, consider system-specific subtypes in the future
 export class NpcData extends CommonActorData {
   static defineSchema() {
     const commonData = super.defineSchema();
