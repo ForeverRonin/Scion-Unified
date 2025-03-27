@@ -145,6 +145,9 @@ Handlebars.registerHelper("enrichedHTMLItems", function (sheetData, type, itemID
 $(document).ready(() => {
   const diceIconSelector = '#chat-controls .chat-control-icon .fa-dice-d20';
 
+  // TODO [UI-REFRACTOR]: This dialog still uses "storypath storypath-dialog dice-roller" class stack.
+// Consider updating to match new reusable modal styles during the UI cleanup sprint.
+// Related: SimpleChatPromptDialog refactor & Storypath modal styling.
   $(document).on('click', diceIconSelector, ev => {
     ev.preventDefault();
     new RollForm2(null, {classes: ["storypath storypath-dialog dice-roller"]}, {}, { rollType: 'base' }).render(true);
