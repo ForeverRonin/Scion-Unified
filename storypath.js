@@ -95,12 +95,12 @@ Items.unregisterSheet("core", ItemSheet);
 // Register the custom Storypath sheets
 console.log("Registering StorypathActorSheet for types: ['scion', 'npc']");
 
-Actors.registerSheet("storypath", StorypathActorSheet, {
+Actors.registerSheet("scion-unified", StorypathActorSheet, {
   types: ["scion", "npc"],  // Add all custom actor types here
   makeDefault: true
 });
 
-Items.registerSheet("storypath", StorypathItemSheet, {
+Items.registerSheet("scion-unified", StorypathItemSheet, {
   types: ["item", "path", "boon", "knack", "condition", "specialty", "birthright", "purview", "spell", "fatebinding", "quality", "contact", "health", "flair", "calling"],
   makeDefault: true
 });
